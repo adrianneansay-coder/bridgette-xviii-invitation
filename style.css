@@ -28,3 +28,82 @@
 .dress-groups .dress-ref figcaption{font-size:11px;line-height:1.4;font-weight:600;color:#725774}
 .dress-groups .dress-ref figcaption span{font-size:9px;font-weight:400;color:#8e7c91}
 @media(min-width:700px){.dress-groups{gap:28px}.dress-group h3{text-align:left}.dress-groups .dress-ref{gap:10px}.dress-groups .dress-ref figcaption{font-size:12px}}
+.simple-dress-groups{
+  display:grid;
+  gap:16px;
+  margin-top:18px;
+}
+
+.clean-dress-card{
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(160,120,170,0.18);
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 10px 30px rgba(80,40,90,0.06);
+  backdrop-filter: blur(8px);
+}
+
+.clean-dress-card h3{
+  margin: 0 0 14px;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a5b8f;
+}
+
+.color-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.color-chip{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(160,120,170,0.14);
+  color:#6d547f;
+  font-size:0.95rem;
+}
+
+.color-dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background: var(--sw);
+  border: 1px solid rgba(0,0,0,0.06);
+  display:inline-block;
+}
+
+.motif-swatches{
+  display:flex;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.motif-swatches span{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background: var(--sw);
+  border: 2px solid rgba(255,255,255,0.85);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  display:inline-block;
+}
+
+.clean-dress-card small{
+  display:block;
+  color:#8f78a1;
+  letter-spacing:0.1em;
+  line-height:1.6;
+}
+
+#dressType,
+#dressNote,
+.dress-caption,
+.dress-ref figcaption{
+  display:none !important;
+}
