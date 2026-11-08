@@ -7,8 +7,33 @@
 <title>Bridgette Andrea | An Enchanted Eighteen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=layout-repair-2">
 <script src="config.js" defer></script><script src="traditions.js" defer></script><script src="script.js" defer></script>
+<style id="dress-code-layout-fix">
+/* Reliable, responsive dress gallery layout repair — November 2026 */
+#attire { padding: 80px 20px !important; overflow: hidden; }
+#attire .attire-layout { display: block !important; width: 100% !important; max-width: 1100px !important; margin: 0 auto !important; }
+#attire .attire-content { width: 100% !important; max-width: none !important; text-align: center !important; }
+#attire .attire-content h2 { text-align: center !important; margin: 8px 0 15px !important; }
+#attire .attire-simple-label { display: block !important; margin: 6px 0 20px !important; text-align: center !important; }
+#attire .attire-comfort-note { max-width: 700px !important; margin: 0 auto 36px !important; text-align: center !important; }
+#attire .dress-gallery { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 26px !important; width: 100% !important; max-width: 1050px !important; margin: 0 auto !important; }
+#attire .dress-group { display: block !important; width: 100% !important; min-width: 0 !important; margin: 0 !important; }
+#attire .dress-group h3 { text-align: center !important; margin: 0 0 17px !important; font-size: clamp(26px,3vw,36px) !important; }
+#attire .dress-photo-row { display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important; gap: 12px !important; width: 100% !important; }
+#attire .dress-photo-row img { display: block !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; height: auto !important; aspect-ratio: 3 / 4.4 !important; object-fit: cover !important; object-position: center !important; margin: 0 !important; padding: 0 !important; border: 4px solid #fffaf8 !important; border-radius: 10px !important; outline: 1px solid #e2d3e2 !important; background: #fffaf6 !important; box-shadow: 0 5px 20px #72547720 !important; }
+#attire .motif-panel { display: block !important; width: 100% !important; max-width: 650px !important; margin: 44px auto 0 !important; padding: 22px 12px !important; text-align: center !important; }
+#attire .motif-colors { display: flex !important; justify-content: center !important; gap: 14px !important; }
+#attire .motif-colors span { display: block !important; flex: none !important; }
+#attire .attire-photo { display: none !important; }
+@media(max-width:650px) {
+  #attire { padding: 65px 14px !important; }
+  #attire .dress-gallery { grid-template-columns: 1fr !important; gap: 32px !important; }
+  #attire .dress-photo-row { gap: 8px !important; }
+  #attire .dress-photo-row img { border-width: 2px !important; }
+  #attire .motif-panel { margin-top: 34px !important; }
+}
+</style>
 </head>
 <body class="unopened">
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Open the birthday invitation">
