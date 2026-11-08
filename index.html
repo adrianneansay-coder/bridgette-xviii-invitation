@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ede1f0">
+<meta name="description" content="A special invitation to Bridgette Andrea's enchanted eighteenth birthday celebration.">
+<title>Bridgette Andrea | An Enchanted Eighteen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js" defer></script><script src="traditions.js" defer></script><script src="script.js" defer></script>
+</head>
+<body class="unopened">
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Open the birthday invitation">
+  <div class="intro-flowers f-left" aria-hidden="true">✿<span>❀</span>✿</div><div class="intro-flowers f-right" aria-hidden="true">✿<span>❀</span>✿</div>
+  <div class="intro-top"><span class="small-label">A LITTLE MAGIC AWAITS</span><h1>A special invitation<br><em>just for you</em></h1><p>A beautiful new chapter is about to unfold.</p></div>
+  <button class="envelope-button" id="openEnvelope" aria-label="Tap to open Bridgette Andrea's invitation">
+    <span class="envelope-shadow"></span><span class="envelope" aria-hidden="true"><span class="envelope-back"></span><span class="envelope-letter"><img class="letter-logo" src="images/bridgette-b-logo.png" alt="Bridgette B monogram"><span class="letter-rule">✦</span><span class="letter-text">YOU'RE INVITED</span></span><span class="envelope-flap"></span><span class="envelope-front"></span><span class="envelope-seal"><img src="images/bridgette-b-logo.png" alt="" /></span></span>
+  </button>
+  <button class="intro-cta" id="openText">TAP TO OPEN <span>✦</span></button>
+  <div class="intro-bottom">BRIDGETTE ANDREA <span>·</span> XVIII</div>
+</div>
+<div class="site" id="site">
+  <nav class="nav"><a href="#home" class="brand" aria-label="Bridgette Andrea home"><img src="images/bridgette-b-logo.png" alt="Bridgette B logo"></a><span class="nav-caption">THE ENCHANTED XVIII</span><a href="#rsvp" class="nav-rsvp">RSVP ↗</a></nav>
+  <main>
+    <section class="hero" id="home" aria-label="Welcome">
+      <img src="images/photo-03.webp" alt="Bridgette Andrea in her floral debut gown on a stone staircase" class="hero-img" fetchpriority="high">
+      <div class="hero-vignette"></div><div class="hero-top">WITH JOY IN OUR HEARTS, YOU ARE INVITED TO</div>
+      <div class="hero-content"><div class="mini-flower"><img class="monogram-ornament" src="images/bridgette-b-logo.png" alt=""></div><span class="hero-kicker">THE EIGHTEENTH BIRTHDAY OF</span><h1>Bridgette <span>Andrea</span></h1><div class="hero-divider"><i></i><b>XVIII</b><i></i></div><p>An Enchanted Eighteen</p><a href="#invitation" class="hero-link">ENTER THE GARDEN <span>↓</span></a></div>
+      <div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
+    </section>
+    <section class="section opening" id="invitation"><div class="section-inner two-col">
+      <div class="portrait-wrap reveal"><div class="photo-arch"><img src="images/photo-06.webp" loading="lazy" alt="Close-up portrait of Bridgette in her floral gown"></div><span class="photo-outline"></span><span class="float-script">eighteen & blooming</span></div>
+      <div class="prose reveal"><div class="eyebrow">A NEW CHAPTER BEGINS</div><h2>Once upon<br>an <em>eighteen…</em></h2><div class="ornament">✦ ❀ ✦</div><p>As a new chapter blossoms into a beautiful season, I'm stepping into a chapter filled with dreams, gratitude, and endless possibilities.</p><p>It would mean the world to have you by my side as I celebrate this unforgettable milestone. Come share an evening of laughter, love, and a little bit of magic.</p><p class="signature">With love, <span>Bridgette Andrea</span></p></div>
+    </div></section>
+    <section class="feature-quote" aria-label="An enchanted evening"><img src="images/photo-07.webp" alt="Bridgette in a flowing lavender gown on a stone walkway" loading="lazy"><div class="quote-shade"></div><div class="quote-text reveal"><span>✧ &nbsp; THE STORY CONTINUES &nbsp; ✧</span><h2>Every story<br>begins with a <em>dream.</em></h2><p>Come celebrate the magic of becoming eighteen.</p></div></section>
+    <section class="section event" id="details"><div class="section-head reveal"><div class="eyebrow">SAVE THE DATE</div><h2>Our Enchanted <em>Evening</em></h2><p>A date to remember, a moment to treasure.</p></div>
+      <div class="event-grid"><div class="event-card reveal"><div class="line-icon">✧</div><h3>When</h3><p id="dateDisplay">Date to be announced</p><span id="timeDisplay">Time to be announced</span></div><div class="event-card reveal"><div class="line-icon">❀</div><h3>Where</h3><p id="venueDisplay">Venue to be announced</p><span id="addressDisplay">Location details coming soon</span><a id="mapsButton" class="subtle-link hidden" href="#" target="_blank" rel="noopener noreferrer">OPEN DIRECTIONS ↗</a></div></div>
+      <div class="countdown-wrap reveal" id="countdownWrap" hidden><div class="eyebrow">COUNTING DOWN THE MOMENTS</div><div class="countdown"><div><strong id="days">00</strong><small>DAYS</small></div><div><strong id="hours">00</strong><small>HOURS</small></div><div><strong id="minutes">00</strong><small>MINUTES</small></div><div><strong id="seconds">00</strong><small>SECONDS</small></div></div></div>
+      <div class="event-photo reveal"><img src="images/photo-13.webp" loading="lazy" alt="Bridgette on the castle stairs in her gown"><img src="images/photo-04.webp" loading="lazy" alt="Bridgette in her flowing gown in a stone courtyard"></div>
+    </section>
+    <section class="section traditions" id="traditions">
+      <div class="section-head reveal"><div class="eyebrow">BELOVED DEBUT TRADITIONS</div><h2>Six Traditions,<br><em>One Magical Night</em></h2><p>Tap any tradition to see the full list of participants.</p></div>
+      <div class="tradition-grid" id="traditionGrid"></div>
+      <div class="role-search reveal" id="roleSearch"><img class="section-logo" src="images/bridgette-b-logo.png" alt=""><div class="eyebrow">FIND YOUR SPECIAL PART</div><h3>Am I part of a tradition?</h3><p>Type your name to find every tradition where you're listed.</p><label for="roleName">Search your name</label><input type="search" id="roleName" autocomplete="off" placeholder="Start typing your name…"><div id="roleResults" aria-live="polite"></div></div>
+    </section>
+    <section class="chapter chapter-forest" id="forest"><div class="section-head reveal"><div class="eyebrow">CHAPTER I</div><h2>Into the <em>Enchanted Woods</em></h2><p>Where fairytales begin and every moment feels like wonder.</p></div><div class="editorial-grid"><figure class="wide reveal"><img src="images/photo-01.webp" loading="lazy" alt="Bridgette standing with a horse in a pine forest"></figure><figure class="tall reveal"><img src="images/photo-02.webp" loading="lazy" alt="Bridgette posed with a horse in the forest"></figure><figure class="tall reveal"><img src="images/photo-14.webp" loading="lazy" alt="Bridgette beside a horse wearing a floral gown"></figure></div></section>
+    <section class="chapter chapter-lantern" id="memories"><div class="section-head reveal"><div class="eyebrow">CHAPTER II</div><h2>A Little <em>Magic</em></h2><p>Unforgettable moments captured between dreams and daylight.</p></div><div class="memory-grid"><figure class="reveal"><img src="images/photo-05.webp" loading="lazy" alt="Bridgette holding a lantern in an enchanting setting"></figure><figure class="reveal"><img src="images/photo-08.webp" loading="lazy" alt="Bridgette posing in a flowing lavender gown"></figure><figure class="reveal"><img src="images/photo-15.webp" loading="lazy" alt="Bridgette seated in a lavender gown by carved stone"></figure></div></section>
+    <section class="chapter chapter-garden" id="garden"><div class="section-head reveal"><div class="eyebrow">CHAPTER III</div><h2>Blooming at <em>Eighteen</em></h2><p>A garden full of new beginnings and beautiful possibilities.</p></div><div class="garden-layout"><figure class="reveal"><img src="images/photo-09.webp" loading="lazy" alt="Bridgette smiling among bright flowers"></figure><figure class="reveal"><img src="images/photo-10.webp" loading="lazy" alt="Bridgette in lavender dress among pink blossoms"></figure></div></section>
+    <section class="section attire" id="attire"><div class="section-inner attire-layout"><div class="attire-content reveal"><div class="eyebrow">DRESS FOR THE OCCASION</div><h2>The Garden <em>Dress Code</em></h2><p id="dressType">Semi-formal attire</p><p id="dressNote">Please dress elegantly and comfortably in pastel yellow, pastel pink, pastel blue, or pastel green.</p><div class="dress-groups" aria-label="Faceless pastel semi-formal outfit inspiration">
+  <div class="dress-group"><h3>For the Ladies</h3><div class="dress-ref">
+    <figure><img src="images/ladies-yellow.svg" alt="Pastel yellow sleeveless layered midi dress, clothing only" loading="lazy"><figcaption>Pastel Yellow<br><span>Layered midi dress</span></figcaption></figure>
+    <figure><img src="images/ladies-pink.svg" alt="Pastel pink draped evening dress, clothing only" loading="lazy"><figcaption>Pastel Pink<br><span>Draped A-line dress</span></figcaption></figure>
+    <figure><img src="images/ladies-blue.svg" alt="Pastel blue semi-formal puff sleeve dress, clothing only" loading="lazy"><figcaption>Pastel Blue<br><span>Soft-sleeve dress</span></figcaption></figure>
+  </div></div>
+  <div class="dress-group"><h3>For the Gentlemen</h3><div class="dress-ref">
+    <figure><img src="images/gentlemen-green.svg" alt="Pastel green tailored blazer and beige trousers, clothing only" loading="lazy"><figcaption>Pastel Green<br><span>Blazer &amp; trousers</span></figcaption></figure>
+    <figure><img src="images/gentlemen-blue.svg" alt="Pastel blue semi-formal suit, clothing only" loading="lazy"><figcaption>Pastel Blue<br><span>Soft blue suit</span></figcaption></figure>
+    <figure><img src="images/gentlemen-pink.svg" alt="Pastel pink blazer and neutral trousers, clothing only" loading="lazy"><figcaption>Pastel Pink<br><span>Blazer &amp; trousers</span></figcaption></figure>
+  </div></div>
+</div><p class="dress-caption">Outfit illustrations only — no models. Choose any comfortable semi-formal clothing in the four approved pastel colors.</p><div class="swatches" aria-label="Suggested dress colors"><span style="--sw:#f8e8a5" title="Pastel Yellow"></span><span style="--sw:#f4c9d9" title="Pastel Pink"></span><span style="--sw:#bcdcf3" title="Pastel Blue"></span><span style="--sw:#c8e8cf" title="Pastel Green"></span></div><small>PASTEL YELLOW · PASTEL PINK · PASTEL BLUE · PASTEL GREEN</small></div><div class="attire-photo reveal"><img src="images/photo-11.webp" loading="lazy" alt="Bridgette wearing her floral ball gown at a garden park entrance"></div></div></section>
+    <section class="section gallery" id="gallery"><div class="section-head reveal"><div class="eyebrow">A COLLECTION OF MOMENTS</div><h2>Through the <em>Looking Glass</em></h2><p>Fifteen little glimpses into a beautiful new chapter. Tap a photo to view it.</p></div><div class="gallery-grid" id="galleryGrid"></div></section>
+    <section class="rsvp-section" id="rsvp"><img class="rsvp-image" src="images/photo-12.webp" alt="Bridgette posing by a stone wall in a lavender gown" loading="lazy"><div class="rsvp-content reveal"><span class="eyebrow">YOU'RE PART OF MY STORY</span><h2>Will You Join<br><em>the Celebration?</em></h2><p>I would love to celebrate this milestone with you. Please confirm attendance for yourself and the loved ones listed under your invitation.</p><div id="rsvpDeadlineDisplay" class="deadline hidden"></div><a class="rsvp-button" id="rsvpButton" href="https://script.google.com/macros/s/AKfycbxDxPuAGVUgnqMqhzjyFteJs97ifKrfIRFt055YL4LgDunbj0ryDfw9xrNabU9ku5qtyg/exec" target="_self">FIND YOUR NAME & RSVP <span>↗</span></a><small id="rsvpHint">Opens your existing guest-name RSVP here in the same browser tab.</small></div></section>
+    <section class="closing"><div class="closing-inner reveal"><div class="eyebrow">FROM MY HEART TO YOURS</div><h2>Thank You</h2><div class="ornament">✦ ❀ ✦</div><p>For the love you've shared, the memories we've made, and the beautiful moments still to come. I cannot wait to celebrate with you.</p><div class="closing-sign">With all my love,<br><span>Bridgette Andrea</span></div><img class="end-logo" src="images/bridgette-b-logo.png" alt="Bridgette logo"></div></section>
+  </main>
+  <footer><a href="#home" class="brand" aria-label="Bridgette Andrea home"><img src="images/bridgette-b-logo.png" alt="Bridgette B logo"></a><span>AN ENCHANTED EIGHTEEN</span><a href="#rsvp">RSVP ↑</a></footer>
+</div>
+<div class="tradition-modal hidden" id="traditionModal" role="dialog" aria-modal="true" aria-labelledby="traditionTitle"><div class="tradition-dialog"><button type="button" class="tradition-close" id="closeTradition" aria-label="Close tradition list">×</button><img src="images/bridgette-b-logo.png" class="dialog-logo" alt=""><p class="eyebrow">BRIDGETTE ANDREA · XVIII</p><h2 id="traditionTitle"></h2><p class="tradition-total" id="traditionTotal"></p><ol id="traditionNames"></ol></div></div>
+<div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="closeLightbox" class="lightbox-close" aria-label="Close photo">×</button><button class="lightbox-prev" id="prevPhoto" aria-label="Previous photo">‹</button><img id="lightboxImage" alt="Bridgette Andrea debut photograph"><button class="lightbox-next" id="nextPhoto" aria-label="Next photo">›</button><span class="lightbox-count" id="lightboxCount"></span></div>
+</body></html>
