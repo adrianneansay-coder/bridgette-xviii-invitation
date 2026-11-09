@@ -336,7 +336,7 @@ window.TRADITIONS = [
       },
       {
         "number": 7,
-        "name": "Raniel Galang"
+        "name": "Raniel Concha"
       },
       {
         "number": 8,
