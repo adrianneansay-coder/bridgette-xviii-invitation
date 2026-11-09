@@ -89,70 +89,66 @@ window.TRADITIONS = [
       },
       {
         "number": 3,
-        "name": "Amielle Ferb Ansay"
-      },
-      {
-        "number": 4,
         "name": "Anton Ansay"
       },
       {
-        "number": 5,
+        "number": 4,
         "name": "Giorsen Mijares"
       },
       {
-        "number": 6,
+        "number": 5,
         "name": "Norwein France Belen"
       },
       {
-        "number": 7,
+        "number": 6,
         "name": "Prince Thirdy Mijares"
       },
       {
-        "number": 8,
+        "number": 7,
         "name": "Sean Jhay Adarayan"
       },
       {
-        "number": 9,
+        "number": 8,
         "name": "Mark Cedie Albano"
       },
       {
-        "number": 10,
+        "number": 9,
         "name": "Carlo Gabayan"
       },
       {
-        "number": 11,
+        "number": 10,
         "name": "John Carl Baynas"
       },
       {
-        "number": 12,
+        "number": 11,
         "name": "Dustine Kim Mangalindan"
       },
       {
-        "number": 13,
+        "number": 12,
         "name": "Gabriel Bumalay"
       },
       {
-        "number": 14,
+        "number": 13,
         "name": "Glenn Dale Caballero"
       },
       {
-        "number": 15,
+        "number": 14,
         "name": "Reial Langbis"
       },
       {
-        "number": 16,
+        "number": 15,
         "name": "Prince Ronald Anduyan"
       },
       {
-        "number": 17,
+        "number": 16,
         "name": "Jomar Lansangan"
       },
       {
-        "number": 18,
+        "number": 17,
         "name": "Ronanne Andrei Camacho"
       },
       {
-        "number": 19,
+        "number": 18,
         "name": "Tony Ansay"
       }
     ]
@@ -453,7 +449,7 @@ window.TRADITIONS = [
       },
       {
         "number": 16,
-        "name": "JC anak nila tito bong"
+        "name": "JC Roxas"
       },
       {
         "number": 17,
