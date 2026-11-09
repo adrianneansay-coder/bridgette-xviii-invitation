@@ -217,5 +217,121 @@
   updateButton();
 })();
 </script>
+<!-- BRIDGETTE'S BACKGROUND MUSIC -->
+<audio
+  id="invitationMusic"
+  src="images/invitation-song.mp3"
+  preload="auto">
+</audio>
+
+<button
+  id="musicToggle"
+  type="button"
+  aria-label="Play or pause music"
+  hidden>♫</button>
+
+<style>
+  #musicToggle {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid #d4b8dc;
+    background: #fff7fbea;
+    color: #76517d;
+    font-size: 25px;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: 0 5px 20px #76517d30;
+  }
+
+  #musicToggle:not([hidden]) {
+    display: grid;
+    place-items: center;
+  }
+</style>
+
+<script>
+(function () {
+  const audio = document.getElementById("invitationMusic");
+  const button = document.getElementById("musicToggle");
+
+  const START = 49;  // 0:49
+  const END = 90;    // 1:30
+
+  let started = false;
+
+  function updateButton() {
+    button.textContent = audio.paused ? "▶" : "♫";
+    button.setAttribute(
+      "aria-label",
+      audio.paused ? "Play music" : "Pause music"
+    );
+  }
+
+  async function playMusic() {
+    started = true;
+    button.hidden = false;
+
+    if (audio.readyState < 1) {
+      await new Promise(resolve => {
+        audio.addEventListener("loadedmetadata", resolve, { once: true });
+        audio.load();
+      });
+    }
+
+    if (audio.currentTime < START || audio.currentTime >= END) {
+      audio.currentTime = START;
+    }
+
+    try {
+      await audio.play();
+    } catch (error) {
+      console.log("Tap the music button to start playback.");
+    }
+
+    updateButton();
+  }
+
+  audio.addEventListener("timeupdate", function () {
+    if (audio.currentTime >= END) {
+      audio.currentTime = START;
+      if (!audio.paused) audio.play().catch(() => {});
+    }
+  });
+
+  audio.addEventListener("ended", function () {
+    if (started) {
+      audio.currentTime = START;
+      audio.play().catch(() => {});
+    }
+  });
+
+  audio.addEventListener("play", updateButton);
+  audio.addEventListener("pause", updateButton);
+
+  button.addEventListener("click", function () {
+    if (audio.paused) {
+      playMusic();
+    } else {
+      audio.pause();
+    }
+  });
+
+  ["openEnvelope", "openText"].forEach(function (id) {
+    const opener = document.getElementById(id);
+
+    if (opener) {
+      opener.addEventListener("click", function () {
+        if (!started) playMusic();
+      });
+    }
+  });
+
+  updateButton();
+})();
+</script>
 </body></html>
 
