@@ -150,6 +150,7 @@
     return true;
   }
   function startMusic() {
+    if (document.hidden) return;
     button.hidden = false;
     wanted = true;
     message('');
@@ -183,14 +184,30 @@
     }
   });
   audio.addEventListener('ended', () => {
-    if (wanted) { audio.currentTime = START; startMusic(); }
+    if (wanted && !document.hidden) { audio.currentTime = START; startMusic(); }
   });
-  audio.addEventListener('playing', () => { message(''); update(); });
+  audio.addEventListener('playing', () => {
+    if (document.hidden) { pauseOnLeave(); return; }
+    message(''); update();
+  });
   audio.addEventListener('pause', update);
   button.addEventListener('click', () => {
     if (audio.paused) startMusic();
     else { wanted = false; audio.pause(); update(); }
   });
+  // Pause whenever a guest leaves the tab, minimizes the browser,
+  // switches apps, or navigates away. Never autoplay on return.
+  function pauseOnLeave() {
+    wanted = false;
+    audio.pause();
+    update();
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pauseOnLeave();
+  });
+  window.addEventListener('pagehide', pauseOnLeave);
+  window.addEventListener('blur', pauseOnLeave);
+
   ['openEnvelope','openText'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', () => {
@@ -200,4 +217,5 @@
   update();
 })();
 </script>
+
 </body></html>
