@@ -114,121 +114,90 @@
 <div class="tradition-modal hidden" id="traditionModal" role="dialog" aria-modal="true" aria-labelledby="traditionTitle"><div class="tradition-dialog"><button type="button" class="tradition-close" id="closeTradition" aria-label="Close tradition list">×</button><img src="images/bridgette-b-logo.png" class="dialog-logo" alt=""><p class="eyebrow">BRIDGETTE ANDREA · XVIII</p><h2 id="traditionTitle"></h2><p class="tradition-total" id="traditionTotal"></p><ol id="traditionNames"></ol></div></div>
 <div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="closeLightbox" class="lightbox-close" aria-label="Close photo">×</button><button class="lightbox-prev" id="prevPhoto" aria-label="Previous photo">‹</button><img id="lightboxImage" alt="Bridgette Andrea debut photograph"><button class="lightbox-next" id="nextPhoto" aria-label="Next photo">›</button><span class="lightbox-count" id="lightboxCount"></span></div>
 <!-- Bridgette's background music: one player, 0:49–1:30 loop -->
-<audio id="invitationMusic" src="images/invitation-song.mp3" preload="auto"></audio>
-<button id="musicToggle" type="button" aria-label="Play background music" title="Play or pause music" hidden>▶</button>
-
+<audio id="invitationMusic" src="images/invitation-song.mp3?v=4" preload="auto"></audio>
+<button id="musicToggle" type="button" aria-label="Play music" title="Play or pause music" hidden>▶</button>
+<div id="musicNotice" role="status" aria-live="polite" hidden></div>
 <style>
-  #musicToggle {
-    position: fixed;
-    right: 18px;
-    bottom: calc(22px + env(safe-area-inset-bottom));
-    z-index: 999;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    border: 1px solid #ceb6d3;
-    background: #fff9fdec;
-    color: #77517e;
-    font-size: 25px;
-    box-shadow: 0 5px 20px #684b7833;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    touch-action: manipulation;
-  }
-  #musicToggle[hidden] { display: none !important; }
-  #musicToggle:focus-visible { outline: 3px solid #a77ab4; }
+#musicToggle { position:fixed; right:18px; bottom:calc(22px + env(safe-area-inset-bottom)); z-index:999; width:54px; height:54px; border-radius:50%; border:1px solid #ceb6d3; background:#fff9fdec; color:#77517e; font-size:25px; box-shadow:0 5px 20px #684b7833; cursor:pointer; display:grid; place-items:center; touch-action:manipulation; }
+#musicToggle[hidden],#musicNotice[hidden]{display:none!important}
+#musicNotice{position:fixed;z-index:1000;bottom:calc(85px + env(safe-area-inset-bottom));right:15px;max-width:min(310px,calc(100vw - 30px));background:#fff9fd;border:1px solid #ceb6d3;border-radius:12px;padding:12px 14px;color:#62406e;font:13px/1.45 sans-serif;box-shadow:0 5px 20px #684b78330}
 </style>
-
 <script>
 (() => {
-  "use strict";
-  const audio = document.getElementById("invitationMusic");
-  const button = document.getElementById("musicToggle");
+  'use strict';
+  const audio = document.getElementById('invitationMusic');
+  const button = document.getElementById('musicToggle');
+  const notice = document.getElementById('musicNotice');
   const START = 49; // 0:49
   const END = 90;   // 1:30
-  let opened = false;
-  let userPaused = false;
+  let wanted = false;
+  let openingWasTapped = false;
+  audio.volume = 0.65;
 
-  function updateButton() {
-    const paused = audio.paused;
-    button.textContent = paused ? "▶" : "♫";
-    button.setAttribute("aria-label", paused ? "Play background music" : "Pause background music");
-    button.title = paused ? "Play music" : "Pause music";
+  function message(text) { notice.textContent = text; notice.hidden = !text; }
+  function update() {
+    button.textContent = audio.paused ? '▶' : '♫';
+    button.setAttribute('aria-label', audio.paused ? 'Play music' : 'Pause music');
   }
-
-  function seekToStart() {
-    try {
-      if (audio.currentTime < START || audio.currentTime >= END) {
-        audio.currentTime = START;
-      }
-    } catch (err) {
-      // Seek again when the MP3 metadata becomes available.
+  function seekIfNeeded() {
+    if (Number.isFinite(audio.duration) && audio.duration < END) {
+      message('This MP3 is shorter than 1:30. Please upload the full song.');
+      return false;
     }
+    if (audio.currentTime < START || audio.currentTime >= END) {
+      try { audio.currentTime = START; } catch (e) { /* Seek after metadata */ }
+    }
+    return true;
   }
-
   function startMusic() {
-    opened = true;
-    userPaused = false;
     button.hidden = false;
-    seekToStart();
-    // IMPORTANT: call play() immediately in the tap/click handler.
-    // Waiting for loadedmetadata with await can lose browser user activation.
-    const attempt = audio.play();
-    if (attempt && typeof attempt.catch === "function") {
-      attempt.catch((error) => {
-        console.warn("Music needs a tap on the floating play button:", error);
-        updateButton();
+    wanted = true;
+    message('');
+    // IMPORTANT: play() is called in the original user click, not after awaiting metadata.
+    if (audio.readyState >= 1) seekIfNeeded();
+    const playRequest = audio.play();
+    if (playRequest && typeof playRequest.catch === 'function') {
+      playRequest.then(() => { update(); message(''); }).catch(error => {
+        update();
+        if (error.name === 'NotAllowedError') message('Your browser blocked music. Tap ▶ to try again.');
+        else if (error.name === 'NotSupportedError') message('The browser cannot play this MP3. Try re-exporting it as MP3.');
+        else message('Music could not play: ' + (error.message || error.name));
       });
     }
-    updateButton();
+    update();
   }
-
-  // Prepare the 0:49 position as early as possible.
-  audio.addEventListener("loadedmetadata", () => {
-    seekToStart();
+  audio.addEventListener('loadedmetadata', () => {
+    if (wanted) seekIfNeeded();
   });
-
-  audio.addEventListener("timeupdate", () => {
+  audio.addEventListener('canplay', () => {
+    if (wanted && audio.currentTime < START) seekIfNeeded();
+  });
+  audio.addEventListener('error', () => {
+    const detail = audio.error ? audio.error.code : 'unknown';
+    message('Song could not load (audio error ' + detail + '). Check images/invitation-song.mp3 in GitHub.');
+    update();
+  });
+  audio.addEventListener('timeupdate', () => {
     if (audio.currentTime >= END) {
       audio.currentTime = START;
     }
   });
-
-  audio.addEventListener("ended", () => {
-    if (opened && !userPaused) {
-      audio.currentTime = START;
-      audio.play().catch(() => updateButton());
-    }
+  audio.addEventListener('ended', () => {
+    if (wanted) { audio.currentTime = START; startMusic(); }
   });
-
-  audio.addEventListener("play", updateButton);
-  audio.addEventListener("pause", updateButton);
-  audio.addEventListener("error", () => {
-    console.error("Could not load images/invitation-song.mp3. Check the GitHub filename.");
-    updateButton();
+  audio.addEventListener('playing', () => { message(''); update(); });
+  audio.addEventListener('pause', update);
+  button.addEventListener('click', () => {
+    if (audio.paused) startMusic();
+    else { wanted = false; audio.pause(); update(); }
   });
-
-  button.addEventListener("click", () => {
-    if (audio.paused) {
-      startMusic();
-    } else {
-      userPaused = true;
-      audio.pause();
-    }
+  ['openEnvelope','openText'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => {
+      if (!openingWasTapped) { openingWasTapped = true; startMusic(); }
+    }, {capture:true});
   });
-
-  // Attach to both ways of opening the original invitation.
-  ["openEnvelope", "openText"].forEach((id) => {
-    const opener = document.getElementById(id);
-    if (opener) {
-      opener.addEventListener("click", () => {
-        if (!opened) startMusic();
-      });
-    }
-  });
-
-  updateButton();
+  update();
 })();
 </script>
 </body></html>
