@@ -217,5 +217,76 @@
   update();
 })();
 </script>
+<!-- Special message for 18 Candles participants -->
+<style>
+  .candles-letter-note {
+    background: #fff8fd;
+    border: 1px solid #dec9e5;
+    border-radius: 14px;
+    padding: 19px 16px;
+    margin: 16px 0 22px;
+    text-align: center;
+    color: #76517d;
+  }
 
+  .candles-letter-note strong {
+    display: block;
+    font: 600 24px 'Cormorant Garamond', serif;
+    margin-bottom: 10px;
+  }
+
+  .candles-letter-note p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0 0 8px;
+  }
+
+  .candles-letter-note small {
+    font-style: italic;
+    color: #9870a6;
+  }
+
+  .candles-letter-note[hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const title = document.getElementById("traditionTitle");
+  const total = document.getElementById("traditionTotal");
+
+  if (!title || !total) return;
+
+  const note = document.createElement("div");
+  note.className = "candles-letter-note";
+  note.hidden = true;
+  note.innerHTML = `
+    <strong>💌 A Little Note for My 18 Candles</strong>
+    <p>
+      Please prepare a handwritten letter or a printed
+      hard copy of your heartfelt message for me and
+      bring it on my special day.
+    </p>
+    <small>
+      Your words will be something I'll treasure forever.
+      <br>With love, Bridgette Andrea ♡
+    </small>
+  `;
+
+  total.insertAdjacentElement("afterend", note);
+
+  function updateNote() {
+    note.hidden = !/18\s*candles/i.test(title.textContent);
+  }
+
+  new MutationObserver(updateNote).observe(title, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+  updateNote();
+});
+</script>
 </body></html>
