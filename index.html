@@ -378,9 +378,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("gardenMagic");
   if (!container) return;
 
-  const mobile = window.matchMedia("(max-width: 650px)").matches;
-  const butterflyCount = mobile ? 8 : 16;
-  const sparkleCount = mobile ? 12 : 22;
+ const mobile = window.matchMedia("(max-width: 650px)").matches;
+const butterflyCount = 10;
+const sparkleCount = mobile ? 10 : 18;
 
   const colors = ["#b99acc", "#d8b7df", "#c5a3ce", "#d9b97c"];
 
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
     butterfly.className = "garden-butterfly";
     butterfly.style.setProperty("--left", (8 + i * 83 / butterflyCount) + "%");
     butterfly.style.setProperty("--size", (mobile ? 23 + i % 3 * 5 : 29 + i % 3 * 7) + "px");
-    butterfly.style.setProperty("--duration", (12 + i * 1.8) + "s");
+  butterfly.style.setProperty("--duration", (12 + i * 1.8) + "s");
     butterfly.style.setProperty("--delay", (-i * 4.1) + "s");
     butterfly.style.setProperty("--drift", ((i % 2 ? -1 : 1) * (35 + i * 9)) + "px");
     butterfly.innerHTML = butterflySVG(colors[i % colors.length]);
